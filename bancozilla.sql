@@ -52,12 +52,14 @@ create table if not exists autentica(
  idautentica int primary key auto_increment,
  nome varchar(50),
  login varchar(10),
- senha varchar(10)
+ senha varchar(10),
+ cpf varchar(20),
+ cargo varchar(30)
  );
   
 
   
-insert into autentica values(01,"Gerente","gerente","1234"),(02,"Atendente","atendente","1234");
+insert into autentica values(01,"Denerson Eduardo","gerente","1234","12345678910", "Gerente"),(02,"Mairon Azevedo","atendente","1234", "12387654312","Atendente"),(03,"Beatriz Dellatorre","admin","1234","16342674918", "Gerente"),(04,"Jardeson Nogueira","tangua","longe","1235278313","Atendente");
 
 insert into cliente (nome, dt_nasc, telefone, email, cep, logadouro, numero, bairro, cidade, estado)values
 ("Eduardo Duarte","31/05/1999","(21)97366-3501","dukenobi31@gmail.com","220392-303", "Estrada Caribu", 600, "Freguesia",
