@@ -15,7 +15,7 @@ public class ProdutoDAO{
         this.con=new ConnectionFactory().getConnection();
 }
 public void adiciona (Produto p){
-    String sql = "INSERT INTO estoque_de_podrutos(produto, quantidade, preco, estMin)"
+    String sql = "INSERT INTO produto(produto, quantidade, preco, estMin)"
             + "VALUES (?,?,?,?)";
     try{
         PreparedStatement stmt = con.prepareStatement(sql);
@@ -34,7 +34,7 @@ public void adiciona (Produto p){
 
 public int ProcuraQuant(int codProd){
     int quant=0;
-    String sql= "SELECT quantidade FROM estoque_de_podrutos WHERE cod_prod="+codProd;
+    String sql= "SELECT quantidade FROM produto WHERE cod_prod="+codProd;
     try{
       PreparedStatement stmt= con.prepareStatement(sql);
       ResultSet rs=stmt.executeQuery();
@@ -53,7 +53,7 @@ public int ProcuraQuant(int codProd){
     this.con = new ConnectionFactory().getConnection();
     String sql ="";
     
-    sql="select * from estoque_de_podrutos where cod_prod='"+id+"'";
+    sql="select * from produto where cod_prod='"+id+"'";
     
     try{
         PreparedStatement stm = con.prepareStatement(sql);
@@ -84,7 +84,7 @@ public int ProcuraQuant(int codProd){
        String status="";
         produto=JOptionPane.showInputDialog(null,"Digite o novo nome do produto:");
         try{
-            ps= con.prepareStatement("update estoque_de_podrutos set produto=? where cod_prod=?");
+            ps= con.prepareStatement("update produto set produto=? where cod_prod=?");
             
             ps.setString(1,produto);
             ps.setString(2,cod_prod);
@@ -109,7 +109,7 @@ public int ProcuraQuant(int codProd){
        String status="";
         desc=JOptionPane.showInputDialog(null,"Digite a nova descrição:");
         try{
-            ps= con.prepareStatement("update estoque_de_podrutos set descricao=? where cod_prod=?");
+            ps= con.prepareStatement("update produto set descricao=? where cod_prod=?");
             
             ps.setString(1,desc);
             ps.setString(2,cod_prod);
@@ -135,7 +135,7 @@ public int ProcuraQuant(int codProd){
        String status="";
         quantidade=Integer.parseInt(JOptionPane.showInputDialog("Digite a nova quantidade"));
         try{
-            ps= con.prepareStatement("update estoque_de_podrutos set quantidade=? where cod_prod=?");
+            ps= con.prepareStatement("update produto set quantidade=? where cod_prod=?");
             
             ps.setInt(1,quantidade);
             ps.setString(2,cod_prod);
@@ -161,7 +161,7 @@ public int ProcuraQuant(int codProd){
        String status="";
         preco=Float.parseFloat(JOptionPane.showInputDialog("Digite o novo preço do produto: "));
         try{
-            ps= con.prepareStatement("update estoque_de_podrutos set preco=? where cod_prod=?");
+            ps= con.prepareStatement("update produto set preco=? where cod_prod=?");
             
             ps.setFloat(1,preco);
             ps.setString(2,cod_prod);
@@ -186,7 +186,7 @@ public int ProcuraQuant(int codProd){
        String status="";
         estMin=Integer.parseInt(JOptionPane.showInputDialog("Digite o novo estoque mínimo do produto: "));
         try{
-            ps= con.prepareStatement("update estoque_de_podrutos set estMin=? where cod_prod=?");
+            ps= con.prepareStatement("update produto set estMin=? where cod_prod=?");
             
             ps.setInt(1,estMin);
             ps.setString(2,cod_prod);
@@ -209,7 +209,7 @@ public int ProcuraQuant(int codProd){
               PreparedStatement ps;
 String status = "";
 try {
-            ps = con.prepareStatement("delete from estoque_de_podrutos where cod_prod=?");
+            ps = con.prepareStatement("delete from produto where cod_prod=?");
             ps.setString(1, cod_prod);
             int i = ps.executeUpdate();
             if (i != 0) {
@@ -227,7 +227,7 @@ try {
 
  public int buscaEstMin(int codProd){
     int estMin=0;
-    String sql= "SELECT estMin FROM estoque_de_podrutos WHERE cod_prod="+codProd;
+    String sql= "SELECT estMin FROM produto WHERE cod_prod="+codProd;
     try{
       PreparedStatement stmt= con.prepareStatement(sql);
       ResultSet rs=stmt.executeQuery();
@@ -243,7 +243,7 @@ try {
 }
     
 public void updateQuant(int codProd, int quant){
-    String sql = "UPDATE estoque_de_podrutos SET quantidade=? where cod_prod=?";
+    String sql = "UPDATE produto SET quantidade=? where cod_prod=?";
     try{
         PreparedStatement stmt= con.prepareStatement(sql);
         stmt.setInt(1,quant);

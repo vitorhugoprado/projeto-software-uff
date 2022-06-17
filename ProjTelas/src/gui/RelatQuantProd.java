@@ -29,18 +29,17 @@ public class RelatQuantProd extends javax.swing.JFrame {
     }
       public void populaCombo(){
           
-        String sql = "select produto from estoque_de_podrutos";
+        String sql = "select produto from produto";
        
         try{
             
-            PreparedStatement pst = con.prepareStatement(sql);  
+            PreparedStatement pst = con.prepareStatement(sql);
             ResultSet res = pst.executeQuery();
             
             while(res.next()){
                 ComboProd.addItem(res.getString("produto"));
-              
+                
             }
-            
         }catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Deu ruim");
         }

@@ -55,7 +55,7 @@ public class VendaDAO {
         String status="";
         String qry;
 
-           qry = "insert into venda(cod_venda,cod_cliente,dt_venda) values(?,?,?)";
+           qry = "insert into venda(cod_venda,cod_cliente,valor_total,dt_venda,pagamento) values(?,?,?,?,?)";
 
            try{
              
@@ -65,7 +65,9 @@ public class VendaDAO {
           
            pst.setInt(1,v.getCod_venda());
            pst.setInt(2, v.getCod_cliente());
-           pst.setString(3,v.getDt_venda());
+           pst.setFloat(3,v.getValor_total());
+           pst.setString(4,v.getDt_venda());
+           pst.setString(5,v.getForm());
            
           
             pst.execute();
@@ -84,7 +86,7 @@ public class VendaDAO {
        public int procuraCodProd(Produto p, String prod){
     int cod=111;
        
-        String query = "select cod_prod from estoque_de_podrutos where produto=?";
+        String query = "select cod_prod from produto where produto=?";
            this.con=new ConnectionFactory().getConnection();   
 	try {
            
@@ -111,7 +113,7 @@ public class VendaDAO {
       public float procuraValorU(Produto p, int codProd){
     float cod=111;
        
-        String query = "select preco from estoque_de_podrutos where cod_prod=?";
+        String query = "select preco from produto where cod_prod=?";
            this.con=new ConnectionFactory().getConnection();   
 	try {
            
@@ -190,6 +192,8 @@ public class VendaDAO {
             System.out.println(e.getMessage());
            // status=e.getMessage();
         }
+        
+        
 
     }
        }

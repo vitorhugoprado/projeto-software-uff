@@ -38,7 +38,7 @@ public class TelaVenda extends javax.swing.JFrame {
     
     public void populaCombo(){
           
-        String sql = "select produto from estoque_de_podrutos";
+        String sql = "select produto from produto";
         
         try{
             
@@ -273,11 +273,11 @@ public class TelaVenda extends javax.swing.JFrame {
         
         String produto=(String) ComboProduto.getSelectedItem();
         
-        int codI=i.getCod_item();
-        codI=codI+1;
+        int codI = i.getCod_item();
+        codI = codI + 1;
         
         
-             codV=vdao.ProcuraCodVenda();
+        codV = vdao.ProcuraCodVenda();
         
         int quantidade = Integer.parseInt(TextQuant.getText().toString());
         int codProd = vdao.procuraCodProd(p, produto);
@@ -306,40 +306,39 @@ public class TelaVenda extends javax.swing.JFrame {
         
         int estMin=pdao.buscaEstMin(codProd);
 
-       int quant=pdao.ProcuraQuant(codProd);
-       int quantFinal=quant-quantidade;
+        int quant=pdao.ProcuraQuant(codProd);
+        int quantFinal=quant-quantidade;
         if (quantidade>quant){
             JOptionPane.showMessageDialog(null,"Quantidade no estoque pequena demais para realizar a compra.");
             TextQuant.setText("");
             
-       return;
+            return;
         }
-         if (quantFinal<0){
-              JOptionPane.showMessageDialog(null,"'"+produto+"' está zerado! Reponha com urgência no estoque");  
-              TextQuant.setText("");
-              return;
+        if (quantFinal<0){
+            JOptionPane.showMessageDialog(null,"'"+produto+"' está zerado! Reponha com urgência no estoque");  
+            TextQuant.setText("");
+            return;
               
        }
         if ( quantFinal>=0 & quantFinal<=estMin){  
            JOptionPane.showMessageDialog(null,"'"+produto+"' está em estoque mínimo! Com apenas "+quantFinal+" produto(s) no estoque. Reposição necessária.");
-           
-          table1.addRow(new Object[]{codI, produto,quantidade, ValorU, ValorTot});
-           idao.InsereItem(i);
-        quant= quant-quantidade;      
-       pdao.updateQuant(codProd,quant);
-       TextQuant.setText("");
-       ComboProduto.setSelectedItem("Selecione");
-       return; 
-       
-         }else{
+
+            table1.addRow(new Object[]{codI, produto,quantidade, ValorU, ValorTot});
+            idao.InsereItem(i);
+            quant= quant-quantidade;      
+            pdao.updateQuant(codProd,quant);
+            TextQuant.setText("");
+            ComboProduto.setSelectedItem("Selecione");
+            return; 
+        }
+        else{
             
-        table1.addRow(new Object[]{codI, produto,quantidade, ValorU, ValorTot});
-         idao.InsereItem(i);
-        quant= quant-quantidade;
-        TextQuant.setText("");
-               ComboProduto.setSelectedItem("Selecione");
-       pdao.updateQuant(codProd,quant);
-       
+            table1.addRow(new Object[]{codI, produto,quantidade, ValorU, ValorTot});
+            idao.InsereItem(i);
+            quant= quant-quantidade;
+            TextQuant.setText("");
+            ComboProduto.setSelectedItem("Selecione");
+            pdao.updateQuant(codProd,quant);
         }
         
        
@@ -365,17 +364,18 @@ public class TelaVenda extends javax.swing.JFrame {
        
     
         int cod = dv.ProcuraCodCliente(v,ComboNome.getSelectedItem().toString());
-        int codC=v.getCod_cliente();
-        codV=i.getCod_venda();
+        System.out.println(cod);
+        int codC = v.getCod_cliente();
+        codV = i.getCod_venda();
         codI=0;
-         if (cod==0){  
+         if (cod==0){
            
           v.setDt_venda(TextDataVenda.getText());
           
            dv.IncluirVenda(v);
             JOptionPane.showMessageDialog(null, "Venda cadastrada ");
             
-         }else   
+         }else
             System.out.println(resp);
          codI=0;
          
@@ -387,7 +387,6 @@ public class TelaVenda extends javax.swing.JFrame {
        float tot=0;
        for (int i=0;i<=table1.getRowCount()-1;i++){   
            tot+=Double.parseDouble(table1.getValueAt(i, 4).toString());
-           
        }
 
         for(int i=0;i<table1.getRowCount();){
@@ -398,19 +397,19 @@ public class TelaVenda extends javax.swing.JFrame {
          
          if(FormDinheiro.isSelected()){
              form="Dinheiro";
-             v.setForm(form);         
+             v.setForm(form);
          }
          if(FormDeb.isSelected()){
              form="Débito";
-             v.setForm(form);         
+             v.setForm(form);
          }
          if(FormCrd.isSelected()){
              form="Crédito";
-             v.setForm(form);         
+             v.setForm(form);
          }
          if(FormVale.isSelected()){
              form="Vale Alimentação";
-             v.setForm(form);         
+             v.setForm(form);
          }
          
          vdao.Atualiza(v, tot, codV, form);

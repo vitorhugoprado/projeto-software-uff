@@ -161,34 +161,32 @@ ClienteDAO cdao = new ClienteDAO();
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
 
-              try{
+            try{
                 String senha = new String (CSenha.getPassword());
                 String login = CTextLogin.getText();
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bancozilla", "root", "");
-            String sql = "select * from autentica where login=? and senha=?";
+            String sql = "select * from autentica where cpf=? and senha=?";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, login);
             stm.setString(2, senha);
             ResultSet rs = stm.executeQuery();
             if (rs.next()){
-               if(login.equals("gerente")){
+               if(rs.getString("cargo").equals("Gerente")){
                    
                     JOptionPane.showMessageDialog(null, "Logado com sucesso!");
                     TelaGerente usuarioTela = new TelaGerente();                    
                     usuarioTela.setVisible(true);
                     this.dispose();
-            }
+                }
             
-            if(login.equals("atendente")){
+            if(rs.getString("cargo").equals("Atendente")){
                     JOptionPane.showMessageDialog(null, "Logado com sucesso!");
                     TelaAtendente tela = new TelaAtendente();
                     tela.setVisible(true);
                     this.dispose();
-                    
-            }
-
-            } else {   
+                }
+            } else {
                    JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!!");
             }
             

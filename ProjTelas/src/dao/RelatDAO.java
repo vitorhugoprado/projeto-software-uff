@@ -73,8 +73,7 @@ public class RelatDAO {
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
                 int q = rs.getInt(1);
-                quant=quant+q;
-                
+                quant=quant+q; 
             }
 
         }catch(SQLException e) {

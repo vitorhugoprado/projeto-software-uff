@@ -58,7 +58,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         Simbolo.setBounds(0, 10, 100, 100);
 
         Cadastrar.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        Cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/2222.png"))); // NOI18N
+        Cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/cadastrar.png"))); // NOI18N
         Cadastrar.setActionCommand("Próximo");
         Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

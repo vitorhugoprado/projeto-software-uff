@@ -17,7 +17,7 @@ public class Produto {
     private float preco;
     private int estMin;
 
-   
+
     public int getCod_prod() {
         return cod_prod;
     }

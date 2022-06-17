@@ -15,11 +15,11 @@ numero int,
 bairro varchar (30),
 cidade varchar (30),
 estado char(2),
-cpf varchar(20),
+login varchar(20),
 senha varchar(20)
 );
 
-create table if not exists produto(
+create table if not exists estoque_de_podrutos(
 cod_prod int not null auto_increment primary key,
 produto varchar(50),
 quantidade int,
@@ -51,14 +51,13 @@ foreign key (cod_venda) references venda (cod_venda)
 create table if not exists autentica(
  idautentica int primary key auto_increment,
  nome varchar(50),
- senha varchar(10),
- cpf varchar(20),
- cargo varchar(30)
+ login varchar(10),
+ senha varchar(10)
  );
   
 
   
-insert into autentica values(01,"Denerson Eduardo","1234","12345678910", "Gerente"),(02,"Mairon Azevedo","1234", "12387654312","Atendente"),(03,"Beatriz Dellatorre","1234","16342674918", "Gerente"),(04,"Jardeson Nogueira","longe","1235278313","Atendente");
+insert into autentica values(01,"Gerente","gerente","1234"),(02,"Atendente","atendente","1234");
 
 insert into cliente (nome, dt_nasc, telefone, email, cep, logadouro, numero, bairro, cidade, estado)values
 ("Eduardo Duarte","31/05/1999","(21)97366-3501","dukenobi31@gmail.com","220392-303", "Estrada Caribu", 600, "Freguesia",
@@ -70,7 +69,7 @@ insert into cliente (nome, dt_nasc, telefone, email, cep, logadouro, numero, bai
 ("Octa","31/10/2018","(21)97956-3476","octa@epoluto.com","200483-932","Rua do Epoluto",650,"Engenho Novo",
 "Rio de Janeiro","RJ");
 
-insert into produto (produto, quantidade, preco, estMin) values ("Pedra",10,10,5),("Papel",20,20,6),("Tesoura",10,30,4);
+insert into estoque_de_podrutos (produto, quantidade, preco, estMin) values ("Pedra",10,10,5),("Papel",20,20,6),("Tesoura",10,30,4);
 
 /*select * from venda 
 where (substring(dt_venda from 1 for 2) between substring('15/05/2018' from 1 for 2) and substring('25/05/2018' from 1 for 2) )

@@ -153,7 +153,7 @@ public class NotaFiscal extends javax.swing.JFrame {
         CampoTotal.setText(String.valueOf(nf.getValTot()));
         
          String sql="select i.cod_item, p.produto,i.quant_item, p.preco,"
-                 + "p.preco*i.quant_item as Total from estoque_de_podrutos p,"
+                 + "p.preco*i.quant_item as Total from produto p,"
                     + " item_venda i ";
                  sql=sql + " where p.cod_prod=i.cod_prod and i.cod_venda=" 
                     + codV2;
