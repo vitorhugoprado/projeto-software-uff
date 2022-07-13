@@ -3,8 +3,10 @@
 namespace dao;
 
 require 'connection.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dto/ProdutoDTO.php';
 
 use Conexao\ConexaoBanco;
+use dto\ProdutoDTO;
 use \PDOException;
 
 class ProdutoDAO
@@ -63,6 +65,24 @@ class ProdutoDAO
       $stmt->fetchAll();
 
       //retornando um boolean mostrando o sucesso da exclusão
+      return true;
+    } catch (PDOException $e) {
+      return false;
+    }
+  }
+
+  public function incluirProduto(ProdutoDTO $produto)
+  {
+    try {
+      $sql = "INSERT INTO produtos (nome, preco, estoque) VALUES (?, ?, ?)";
+
+      $stmt = $this->connection->prepare($sql);
+      $stmt->bindParam(1, $produto->getNome());
+      $stmt->bindParam(2, $produto->getPreco());
+      $stmt->bindParam(3, $produto->getEstoque());
+      $stmt->execute();
+      $stmt->fetchAll();
+
       return true;
     } catch (PDOException $e) {
       return false;

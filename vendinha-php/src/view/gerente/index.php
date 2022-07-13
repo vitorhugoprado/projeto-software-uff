@@ -20,6 +20,7 @@
     <button type="button" id="notaFiscal">Emitir nota fiscal</button>
     <button type="button" id="manterCliente">ManterCliente</button>
     <button type="button" id="listarProdutos">Listar produtos</button>
+    <button type="button" id="cadastrarProdutos">Cadastrar produtos</button>
   </form>
 
   <script>
@@ -54,6 +55,10 @@
       $('#listarProdutos').click(function() {
         $('#action').val('listarProdutos');
         form.submit();
+      });
+
+      $('#cadastrarProdutos').click(function() {
+        window.location.href = "./IncluirProdutos";
       });
     });
   </script>

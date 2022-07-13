@@ -2,8 +2,8 @@
 
 namespace controller;
 
-require '../model/dao/ProdutosDAO.php';
-require '../model/dto/ProdutoDTO.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dao/ProdutosDAO.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dto/ProdutoDTO.php';
 
 use dao\ProdutoDAO;
 use dto\ProdutoDTO;
@@ -27,6 +27,13 @@ class GerenteController
     unset($_SESSION["produtos"]);
 
     var_dump($response);
+    return $response;
+  }
+
+  public function incluirProduto(ProdutoDTO $produto)
+  {
+    $produtoDAO = new ProdutoDAO();
+    $response = $produtoDAO->incluirProduto($produto);
     return $response;
   }
 }
@@ -54,5 +61,27 @@ if ($requestWasPost) {
     }
     $_SESSION['error'] = 'Erro ao excluir produto';
     header("Location: /projetos/CafeMania/src/view/gerente/ListarProdutos");
+  }
+
+  if ($action === 'cadastrarProdutos') {
+    $nome = $_POST['nome'];
+    $preco = $_POST['preco'];
+    $estoque = $_POST['estoque'];
+    $produto = new ProdutoDTO(
+      0,
+      $nome,
+      $preco,
+      $estoque
+    );
+
+    $response = $controller->incluirProduto($produto);
+
+    if ($response) {
+      $_SESSION['success'] = 'Produto adicionado com sucesso';
+      header("Location: /projetos/CafeMania/src/view/gerente/ListarProdutos");
+    }
+
+    $_SESSION['error'] = 'Produto não foi adicionado';
+    header("Location: /projetos/CafeMania/src/view/gerente");
   }
 }
