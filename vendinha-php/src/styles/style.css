@@ -1,0 +1,17 @@
+.buttonPrimary {
+  border-color: #5d30b6;
+  color: #5d30b6;
+}
+
+.bgColorPrimary {
+  background-color: #5d30b6;
+}
+
+.minHeight100vh {
+  min-height: 100vh;
+}
+
+.bannerLogin {
+  width: 100%;
+  max-width: 150px;
+}
