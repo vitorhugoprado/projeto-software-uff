@@ -50,6 +50,9 @@ class ProdutoDAO
   }
 
   /*
+  Mairon Azevedo Gonçalves Sodré de Paiva -- 219083094
+  */
+  /*
   Método responsável pela exclusão de um produto por um ID solicitado como parametro
   Acessando o banco de dados, procurando o produto que tem o ID informado.
   Logo após, são feitos os passos para exclusão do produto.
