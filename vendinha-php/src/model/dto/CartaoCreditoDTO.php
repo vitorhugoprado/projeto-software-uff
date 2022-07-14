@@ -1,9 +1,10 @@
 <?php
 
+//padrao strategy: adriano souza - 219.083.118
+
 declare(strict_types=1);
 
 namespace dto;
-
 
 Class CartaoCreditoDTO extends CartaoDTO{
 
