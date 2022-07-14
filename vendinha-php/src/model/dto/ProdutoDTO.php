@@ -2,8 +2,6 @@
 
 namespace dto;
 
-// Luana Victória Gonçalves Vidal Camargo Leão - 219083082
-
 class ProdutoDTO
 {
   private $id, $nome, $preco, $estoque;
