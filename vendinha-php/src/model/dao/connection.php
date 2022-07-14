@@ -5,6 +5,13 @@ namespace Conexao;
 use \PDO;
 use \PDOException;
 
+/*
+Denerson Eduardo Gomes Berudio -- 219083107
+*/
+
+/*
+Classe criada para abrir a conexão com o banco e fazer o login de forma automática
+*/
 class ConexaoBanco
 {
   public static function getConnection()
