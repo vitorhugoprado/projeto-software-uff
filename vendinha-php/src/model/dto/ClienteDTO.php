@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace dto;
 
-// Luana Victória Gonçalves Vidal Camargo Leão - 219083082
-
 class ClienteDTO
 {
   private $id, $nome, $endereco, $email, $cpf, $senha;
+  private static $instance; // campo para armazenar o objeto instanciado
 
   /*
   Construtor da classe ClienteDTO
@@ -118,5 +117,15 @@ class ClienteDTO
   public function setSenha($senha)
   {
     $this->senha = $senha;
+  }
+
+// Singleton: Vitor Prado - 219.083.132
+// singleton implementado para que haja apenas uma instancia de cliente dto
+  public static function getInstance(int $id, String $nome, String $endereco, String $email, $cpf, string $senha)
+  {
+    if (self::$instance === null) {
+      self::$instance = new self($id, $nome, $endereco, $email, $cpf, $senha);
+    }
+    return self::$instance;
   }
 }

@@ -2,12 +2,10 @@
 
 namespace dto;
 
-// Luana Victória Gonçalves Vidal Camargo Leão - 219083082
-
 class UsuarioDTO
 {
   private $id, $nome, $cpf, $cargo;
-
+  private static $instance; // campo para armazenar o objeto instanciado
   /*
   Construtor da classe UsuarioDTO
   Params: id, nome, cpf, cargo.
@@ -82,5 +80,18 @@ class UsuarioDTO
   public function setCargo($cargo)
   {
     $this->cargo = $cargo;
+  }
+    // Singleton: Vitor Prado - 219.083.132
+  //O getInstance do singleton é publico para que seja acessado por outras classes.
+
+  public static function getInstance(int $id, string $nome, string $cpf, string $cargo)
+  {
+    if ($cargo === 'gerente') {
+      //caso seja um gerente, o padrao singleton garante que somente uma instância da classe UsuarioDTO seja criada.
+      if (self::$instance === null) {
+        self::$instance = new self($id, $nome, $cpf, $cargo);
+      }
+      return self::$instance;
+    }
   }
 }
