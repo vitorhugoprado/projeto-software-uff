@@ -2,6 +2,9 @@
 
 namespace dto;
 
+// Singleton: Vitor Prado - 219.083.132
+//DTO: Luana Victória Gonçalves Vidal Camargo Leão - 219.083.082
+
 class UsuarioDTO
 {
   private $id, $nome, $cpf, $cargo;
@@ -81,7 +84,7 @@ class UsuarioDTO
   {
     $this->cargo = $cargo;
   }
-    // Singleton: Vitor Prado - 219.083.132
+
   //O getInstance do singleton é publico para que seja acessado por outras classes.
 
   public static function getInstance(int $id, string $nome, string $cpf, string $cargo)

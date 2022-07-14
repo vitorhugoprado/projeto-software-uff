@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace dto;
 
+// Singleton: Vitor Prado - 219.083.132
+//DTO: Luana Victória Gonçalves Vidal Camargo Leão - 219.083.082
+
 class ClienteDTO
 {
   private $id, $nome, $endereco, $email, $cpf, $senha;
@@ -118,8 +121,6 @@ class ClienteDTO
   {
     $this->senha = $senha;
   }
-
-// Singleton: Vitor Prado - 219.083.132
 // singleton implementado para que haja apenas uma instancia de cliente dto
   public static function getInstance(int $id, String $nome, String $endereco, String $email, $cpf, string $senha)
   {

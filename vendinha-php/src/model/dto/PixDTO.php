@@ -6,6 +6,8 @@ declare(strict_types=1);
 
 namespace dto;
 
+//DTO: Luana Victória Gonçalves Vidal Camargo Leão - 219.083.082
+
 class PixDTO{
 
     private $tipoChave, $chave, $totalVenda;

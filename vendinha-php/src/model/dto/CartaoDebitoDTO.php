@@ -1,6 +1,7 @@
 <?php
 
 //padrao strategy: adriano souza - 219.083.118
+//DTO: Luana Victória Gonçalves Vidal Camargo Leão - 219.083.082
 
 declare(strict_types=1);
 
