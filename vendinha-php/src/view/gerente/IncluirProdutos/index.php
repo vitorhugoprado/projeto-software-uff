@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <?php include('../../../includes/header.php') ?>
   <form action="../../../controller/gerenteController.php" method="post">
     <label for="nome">Nome do produto:</label>
     <input type="text" name="nome" id="nome">
@@ -24,6 +25,7 @@
     <button>Cadastrar</button>
   </form>
 
+  <?php include('../../../includes/footer.php') ?>
 </body>
 
 </html>

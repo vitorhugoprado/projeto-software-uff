@@ -18,6 +18,7 @@ $produtos = $_SESSION['produtos'];
 </head>
 
 <body>
+  <?php include('../../../includes/header.php') ?>
   <table class="table">
     <thead>
       <tr>
@@ -45,6 +46,8 @@ $produtos = $_SESSION['produtos'];
       <?php } ?>
     </tbody>
   </table>
+
+  <?php include('../../../includes/footer.php') ?>
 
   <script>
     $(window).on("load", function() {
